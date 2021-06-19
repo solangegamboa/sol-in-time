@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TipoPonto;
+use App\Models\Checkin;
 use Illuminate\Http\Request;
 
-class TipoPontoController extends Controller
+class CheckinController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function index()
     {
-        //
+        $checkins = Checkin::all();
+        return view('checkin.index', compact('checkins'));
     }
 
     /**
@@ -41,10 +42,10 @@ class TipoPontoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\TipoPonto  $tipoPonto
+     * @param  \App\Models\Checkin  $checkin
      * @return \Illuminate\Http\Response
      */
-    public function show(TipoPonto $tipoPonto)
+    public function show(Checkin $checkin)
     {
         //
     }
@@ -52,10 +53,10 @@ class TipoPontoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\TipoPonto  $tipoPonto
+     * @param  \App\Models\Checkin  $checkin
      * @return \Illuminate\Http\Response
      */
-    public function edit(TipoPonto $tipoPonto)
+    public function edit(Checkin $checkin)
     {
         //
     }
@@ -64,10 +65,10 @@ class TipoPontoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\TipoPonto  $tipoPonto
+     * @param  \App\Models\Checkin  $checkin
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TipoPonto $tipoPonto)
+    public function update(Request $request, Checkin $checkin)
     {
         //
     }
@@ -75,10 +76,10 @@ class TipoPontoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\TipoPonto  $tipoPonto
+     * @param  \App\Models\Checkin  $checkin
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TipoPonto $tipoPonto)
+    public function destroy(Checkin $checkin)
     {
         //
     }
