@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Type;
+use App\Models\Checkin;
 use Illuminate\Http\Request;
 
-class TypeController extends Controller
+class CheckinController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class TypeController extends Controller
      */
     public function index()
     {
-        $types = Type::all();
-        return view('type.index', compact('types'));
+        $checkins = Checkin::all();
+        return view('checkin.index', compact('checkins'));
     }
 
     /**
@@ -42,10 +42,10 @@ class TypeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Type  $type
+     * @param  \App\Models\Checkin  $checkin
      * @return \Illuminate\Http\Response
      */
-    public function show(Type $type)
+    public function show(Checkin $checkin)
     {
         //
     }
@@ -53,10 +53,10 @@ class TypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Type  $type
+     * @param  \App\Models\Checkin  $checkin
      * @return \Illuminate\Http\Response
      */
-    public function edit(Type $type)
+    public function edit(Checkin $checkin)
     {
         //
     }
@@ -65,10 +65,10 @@ class TypeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Type  $type
+     * @param  \App\Models\Checkin  $checkin
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Type $type)
+    public function update(Request $request, Checkin $checkin)
     {
         //
     }
@@ -76,10 +76,10 @@ class TypeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Type  $type
+     * @param  \App\Models\Checkin  $checkin
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Type $type)
+    public function destroy(Checkin $checkin)
     {
         //
     }

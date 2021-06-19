@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class RegistersTable extends Migration
+class CheckinsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class RegistersTable extends Migration
      */
     public function up()
     {
-        Schema::create('registers', function (Blueprint $table) {
+        Schema::create('checkins', function (Blueprint $table) {
             $table->id();
             $table->date('date');
             $table->time('time');
             $table->longText('obs')->nullable();
+            $table->unsignedBigInteger('type_id');
             $table->foreign('type_id')->references('id')->on('types');
             $table->timestamps();
         });
@@ -30,6 +31,6 @@ class RegistersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('types');
+        Schema::dropIfExists('checkins');
     }
 }
