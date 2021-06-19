@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TipoPonto;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
-class TipoPontoController extends Controller
+class TypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,8 @@ class TipoPontoController extends Controller
      */
     public function index()
     {
-        //
+        $types = Type::all();
+        return view('type.index', compact('types'));
     }
 
     /**
@@ -41,10 +42,10 @@ class TipoPontoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\TipoPonto  $tipoPonto
+     * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function show(TipoPonto $tipoPonto)
+    public function show(Type $type)
     {
         //
     }
@@ -52,10 +53,10 @@ class TipoPontoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\TipoPonto  $tipoPonto
+     * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function edit(TipoPonto $tipoPonto)
+    public function edit(Type $type)
     {
         //
     }
@@ -64,10 +65,10 @@ class TipoPontoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\TipoPonto  $tipoPonto
+     * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TipoPonto $tipoPonto)
+    public function update(Request $request, Type $type)
     {
         //
     }
@@ -75,10 +76,10 @@ class TipoPontoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\TipoPonto  $tipoPonto
+     * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TipoPonto $tipoPonto)
+    public function destroy(Type $type)
     {
         //
     }
