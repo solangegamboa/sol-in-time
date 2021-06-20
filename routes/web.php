@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CheckinController;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\TypeController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,7 +24,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::resource('type', TypeController::class)->shallow();
-Route::resource('checkin', CheckinController::class)->shallow();
+Route::resource('type', TypeController::class)->shallow()->middleware(['auth']);
+Route::get('/checkin/export', [CheckinController::class, 'export']);
+Route::resource('checkin', CheckinController::class)->shallow()->middleware(['auth']);
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

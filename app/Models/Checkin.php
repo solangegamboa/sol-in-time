@@ -13,6 +13,30 @@ class Checkin extends Model
         'date',
         'time',
         'obs',
-        'type_id'
+        'type_id',
+        'user_id'
     ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'date' => 'datetime:Y-m-d',
+        'time' => 'datetime:H:i:s'
+    ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function types()
+    {
+        return $this->hasOne(Type::class, 'id', 'type_id');
+    }
+
+    public function users()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
 }
