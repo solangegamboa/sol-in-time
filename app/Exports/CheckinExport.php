@@ -2,16 +2,19 @@
 
 namespace App\Exports;
 
+use App\Http\Resources\CheckinCollection;
 use App\Models\Checkin;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Concerns\FromCollection;
 
 class CheckinExport implements FromCollection
 {
     /**
-    * @return \Illuminate\Support\Collection
-    */
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection|\Illuminate\Support\Collection
+     */
     public function collection()
     {
-        return Checkin::all();
+        $checkins = Checkin::with('types')->where('user_id', Auth::user()->id)->get();
+        return CheckinCollection::collection($checkins);
     }
 }
