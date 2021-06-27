@@ -17,7 +17,7 @@ class CheckinController extends Controller
      */
     public function index()
     {
-        $checkins = Checkin::with('types')->where('user_id', Auth::user()->id)->get();
+        $checkins = Checkin::with('types')->where('user_id', Auth::user()->id)->orderByDesc('date')->orderByDesc('type_id')->get();
         return view('checkin.index', compact('checkins'));
     }
 
@@ -105,6 +105,6 @@ class CheckinController extends Controller
      */
     public function export()
     {
-        return Excel::download(new CheckinExport, 'checkin.xlsx');
+        return Excel::download(new CheckinExport, 'checkin.csv');
     }
 }

@@ -25,7 +25,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::resource('type', TypeController::class)->shallow()->middleware(['auth']);
-Route::get('/checkin/export', [CheckinController::class, 'export']);
+Route::get('/checkin/export', [CheckinController::class, 'export'])->name('checkin.export');
 Route::resource('checkin', CheckinController::class)->shallow()->middleware(['auth']);
 
 require __DIR__ . '/auth.php';

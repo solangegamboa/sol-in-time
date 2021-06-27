@@ -28,14 +28,14 @@
                         </div>
                         <div>
                             <x-label for="date" :value="__('Data')"/>
-                            <x-input type="text" name="date"/>
+                            <x-input type="date" name="date"/>
                             @error('date')
                             {{ $message }}
                             @enderror
                         </div>
                         <div>
                             <x-label for="date" :value="__('Hora')"/>
-                            <x-input type="text" name="time"/>
+                            <x-input type="time" name="time"/>
                             @error('time')
                             {{ $message }}
                             @enderror
