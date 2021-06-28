@@ -2,6 +2,7 @@
 
 - cd sol-in-time
 - composer install
+- php artisan migrate
 - ./vendor/bin/sail up
 
 Ele vai criar no docker o banco
