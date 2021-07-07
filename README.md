@@ -1,12 +1,28 @@
-## Precisa do docker
+## Rodar local
+Precisa do Apache instalado e Mysql
 
 - cd sol-in-time
 - composer install
+- cp .env.example .env
+- mudar confs de database no .env
+- php artisan key:generate
 - php artisan migrate
-- ./vendor/bin/sail up
+  
+- Verificar no arquivo database/seeders/TypeSeeder.php se seu horário de entrada/saida estão de acordo
+- php artisan db:seed
 
-Ele vai criar no docker o banco
-- para ver o IP do banco:  sudo docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' sol-in-time_mariadb_1
+
+* O path ficará http://localhost/sol-in-time/public/ 
+Pra fazer um nome amigável, configurar em seu apache.
+  
+* Entrar em /register para registrar seu usuário.
+* Entrar em /login para fazer o login
+
+
+### TODO MELHORIAS
+- Exportar por período: ainda está exportando tudo do usuário na base
+- Melhorar layout dos botões
+- Editar checkins
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 

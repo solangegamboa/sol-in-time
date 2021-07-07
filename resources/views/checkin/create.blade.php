@@ -1,3 +1,4 @@
+<script type="text/javascript" src="{{ \Illuminate\Support\Facades\URL::asset('js/checkin.js') }}"></script>
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -9,17 +10,21 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 @if (session('success'))
-                    {{ session('success') }}
+                    <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">
+                        <p class="font-bold">Success</p>
+                        <p>{{ session('success') }}</p>
+                    </div>
                 @endif
                 <form action="{{ route('checkin.store') }}" method="post">
                     @csrf
                     <div class="grid">
                         <div>
                             <x-label for="type_id" :value="__('Tipo')"/>
-                            <select name="type_id" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                            <select name="type_id"
+                                    class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                                 <option value="1">Entrada</option>
                                 <option value="2">Almoço Ida</option>
-                                <option value="3">Almoçco Volta</option>
+                                <option value="3">Almoço Volta</option>
                                 <option value="4">Saida</option>
                             </select>
                             @error('type_id')
@@ -28,14 +33,14 @@
                         </div>
                         <div>
                             <x-label for="date" :value="__('Data')"/>
-                            <x-input type="date" name="date"/>
+                            <x-input type="date" name="date" value="{{$date}}"/>
                             @error('date')
                             {{ $message }}
                             @enderror
                         </div>
                         <div>
                             <x-label for="date" :value="__('Hora')"/>
-                            <x-input type="time" name="time"/>
+                            <x-input type="time" name="time" value="{{$time}}"/>
                             @error('time')
                             {{ $message }}
                             @enderror
