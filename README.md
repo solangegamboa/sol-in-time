@@ -1,5 +1,6 @@
 ## Rodar local
-Precisa do Apache instalado e Mysql
+Precisa do Apache instalado e Mysql - Criar database chamado 'sol_in_time'
+
 
 - cd sol-in-time
 - composer install
@@ -10,7 +11,6 @@ Precisa do Apache instalado e Mysql
   
 - Verificar no arquivo database/seeders/TypeSeeder.php se seu horário de entrada/saida estão de acordo
 - php artisan db:seed
-
 
 * O path ficará http://localhost/sol-in-time/public/ 
 Pra fazer um nome amigável, configurar em seu apache.
