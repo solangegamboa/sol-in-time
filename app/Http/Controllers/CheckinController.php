@@ -107,6 +107,6 @@ class CheckinController extends Controller
      */
     public function export()
     {
-        return Excel::download(new CheckinExport, 'checkin.xlsx');
+        return Excel::download(new CheckinExport, 'checkin.csv');
     }
 }
