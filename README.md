@@ -18,6 +18,7 @@ Pra fazer um nome amigável, configurar em seu apache.
 * Entrar em /register para registrar seu usuário.
 * Entrar em /login para fazer o login
 
+- recompilar local: npm run dev / npm run watch
 
 ### TODO MELHORIAS
 - Exportar por período: ainda está exportando tudo do usuário na base
