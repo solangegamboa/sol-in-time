@@ -17,7 +17,7 @@ class CheckinController extends Controller
      */
     public function index()
     {
-        $checkins = Checkin::with('types')->where('user_id', Auth::user()->id)->orderByDesc('date')->orderByDesc('time')->orderByDesc('type_id')->get();
+        $checkins = Checkin::with('types')->where('user_id', Auth::user()->getAuthIdentifier())->orderByDesc('date')->orderByDesc('time')->orderByDesc('type_id')->get();
         return view('checkin.index', compact('checkins'));
     }
 
@@ -28,7 +28,8 @@ class CheckinController extends Controller
      */
     public function create()
     {
-        $dateTime = ['date' => date('Y-m-d'), 'time' => date('H:i')];
+        $lastCheckin = Checkin::with('types')->where('user_id', Auth::user()->getAuthIdentifier())->orderByDesc('date')->orderByDesc('time')->orderByDesc('type_id')->first();
+        $dateTime = ['date' => date('Y-m-d'), 'time' => date('H:i'), 'type' => ($lastCheckin->types->id + 1)];
         return view('checkin.create', $dateTime);
     }
 

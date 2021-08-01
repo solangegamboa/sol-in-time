@@ -8,52 +8,51 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-3">
                 @if (session('success'))
-                    <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">
-                        <p class="font-bold">Success</p>
+                    <div class="alert alert-success" role="alert">
+                        <p>Check-in!</p>
                         <p>{{ session('success') }}</p>
+                        <p><a href="{{ route('checkin.index') }}" class="alert-link">Go to check-in list</a></p>
                     </div>
                 @endif
+
                 <form action="{{ route('checkin.store') }}" method="post">
                     @csrf
-                    <div class="grid">
-                        <div>
-                            <x-label for="type_id" :value="__('Tipo')"/>
-                            <select name="type_id"
-                                    class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                                <option value="1">Entrada</option>
-                                <option value="2">Almoço Ida</option>
-                                <option value="3">Almoço Volta</option>
-                                <option value="4">Saida</option>
-                            </select>
-                            @error('type_id')
-                            {{ $message }}
-                            @enderror
-                        </div>
-                        <div>
-                            <x-label for="date" :value="__('Data')"/>
-                            <x-input type="date" name="date" value="{{$date}}"/>
-                            @error('date')
-                            {{ $message }}
-                            @enderror
-                        </div>
-                        <div>
-                            <x-label for="date" :value="__('Hora')"/>
-                            <x-input type="time" name="time" value="{{$time}}"/>
-                            @error('time')
-                            {{ $message }}
-                            @enderror
-                        </div>
-                        <div>
-                            <x-label for="obs" :value="__('Observações')"/>
-                            <x-input type="text" name="obs"/>
-                            @error('obs')
-                            {{ $message }}
-                            @enderror
-                        </div>
+                    <div class="mb-3">
+                        <label for="type_id" class="form-label">Type</label>
+                        <select class="form-select" aria-label="Type" id="type_id" name="type_id">
+                            <option value="1" {{ $type === 5 ? "selected" : "" }}>Entrada</option>
+                            <option value="2" {{ $type === 2 ? "selected" : "" }}>Almoço Ida</option>
+                            <option value="3" {{ $type === 3 ? "selected" : "" }}>Almoço Volta</option>
+                            <option value="4" {{ $type === 4 ? "selected" : "" }}>Saida</option>
+                        </select>
+                        @error('type_id')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
-                    <x-button type="submit">Clock in</x-button>
+                    <div class="mb-3">
+                        <label for="date" class="form-label">Date</label>
+                        <input type="date" class="form-control" id="date" name="date" value="{{$date}}">
+                    </div>
+                    @error('date')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                    <div class="mb-3">
+                        <label for="time" class="form-label">Time</label>
+                        <input type="time" class="form-control" id="time" name="time" value="{{$time}}">
+                    </div>
+                    @error('time')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                    <div class="mb-3">
+                        <label for="obs" class="form-label">Obs</label>
+                        <input type="text" class="form-control" id="obs" name="obs">
+                    </div>
+                    @error('obs')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                    <button type="submit" class="btn btn-dark"><i class="bi bi-clock"></i> Clock-in</button>
                 </form>
             </div>
         </div>
