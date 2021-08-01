@@ -14,7 +14,7 @@ class CheckinExport implements FromCollection
      */
     public function collection()
     {
-        $checkins = Checkin::with('types')->where('user_id', Auth::user()->getAuthIdentifier())->orderByDesc('date')->orderByDesc('time')->orderByDesc('type_id')->get();
+        $checkins = Checkin::with('types')->where('user_id', Auth::user()->getAuthIdentifier())->orderBy('date')->orderBy('time')->orderBy('type_id')->get();
         return CheckinCollection::collection($checkins);
     }
 }
