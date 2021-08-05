@@ -28,8 +28,12 @@ class CheckinController extends Controller
      */
     public function create()
     {
+        $type = 1;
         $lastCheckin = Checkin::with('types')->where('user_id', Auth::user()->getAuthIdentifier())->orderByDesc('date')->orderByDesc('time')->orderByDesc('type_id')->first();
-        $dateTime = ['date' => date('Y-m-d'), 'time' => date('H:i'), 'type' => ($lastCheckin->types->id + 1)];
+        if ($lastCheckin) {
+            $type = ($lastCheckin->types->id + 1);
+        }
+        $dateTime = ['date' => date('Y-m-d'), 'time' => date('H:i'), 'type' => $type];
         return view('checkin.create', $dateTime);
     }
 
@@ -40,15 +44,15 @@ class CheckinController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'date' => 'required',
-            'time' => 'required',
+            'date'    => 'required',
+            'time'    => 'required',
             'type_id' => 'required',
         ]);
 
         Checkin::create([
-            'date' => $request->date,
-            'time' => $request->time,
-            'obs' => $request->obs,
+            'date'    => $request->date,
+            'time'    => $request->time,
+            'obs'     => $request->obs,
             'type_id' => $request->type_id,
             'user_id' => Auth::user()->id
         ]);
